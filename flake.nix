@@ -4,6 +4,8 @@
     nixpkgs.follows = "nix-ros-overlay/nixpkgs"; # Usage of different nixpkgs for fixes and adaptions
   };
   outputs = { self, nix-ros-overlay, nixpkgs }:
+    # All Systems https://github.com/NixOS/nixpkgs/blob/master/lib/systems/default.nix
+    # Default Systems ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"]
     nix-ros-overlay.inputs.flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -21,6 +23,7 @@
                     roslaunch
                     rosbash
                     rospy-tutorials
+                    # roscpp-tutorials
                 ];
             })
           ];
